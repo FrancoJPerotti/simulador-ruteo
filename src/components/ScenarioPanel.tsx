@@ -34,7 +34,32 @@ export function ScenarioPanel({
   return (
     <>
       <aside className={`scenario-panel ${!isOpen ? 'scenario-panel--closed' : ''}`} aria-label="Escenarios de simulacion">
-        <div className="scenario-panel-title">Escenarios</div>
+        <div className="scenario-panel-header">
+          <div className="scenario-panel-title">Escenarios</div>
+          {onToggle && (
+            <button
+              className="scenario-panel-toggle"
+              onClick={(e) => { e.stopPropagation(); onToggle(); }}
+              aria-label={isOpen ? 'Cerrar panel de escenarios' : 'Abrir panel de escenarios'}
+              title={isOpen ? 'Cerrar panel' : 'Abrir panel'}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                {isOpen ? (
+                  <>
+                    <path d="M18 6L6 18" />
+                    <path d="M6 6l12 12" />
+                  </>
+                ) : (
+                  <>
+                    <path d="M4 6h16" />
+                    <path d="M4 12h16" />
+                    <path d="M4 18h16" />
+                  </>
+                )}
+              </svg>
+            </button>
+          )}
+        </div>
         <div className="scenario-panel-list">
           {scenarios.map((scenario) => (
             <button
@@ -49,42 +74,19 @@ export function ScenarioPanel({
         <div className="scenario-panel-description">
           {activeScenario.description}
         </div>
-        {narrativeText && (
-          <div className="scenario-narrative">
-            {scenarioTotal !== undefined && scenarioStep !== undefined && (
-              <div className="scenario-narrative-step">
-                {scenarioStep + 1 <= scenarioTotal
-                  ? `Paso ${scenarioStep + 1} / ${scenarioTotal}`
-                  : `Paso ${scenarioStep + 1}`}
-              </div>
-            )}
-            <div className="scenario-narrative-text">{renderNarrative(narrativeText)}</div>
-          </div>
-        )}
-      </aside>
-      {onToggle && (
-        <button
-          className="scenario-panel-toggle"
-          onClick={onToggle}
-          aria-label={isOpen ? 'Cerrar panel de escenarios' : 'Abrir panel de escenarios'}
-          title={isOpen ? 'Cerrar panel' : 'Abrir panel'}
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            {isOpen ? (
-              <>
-                <path d="M18 6L6 18" />
-                <path d="M6 6l12 12" />
-              </>
-            ) : (
-              <>
-                <path d="M4 6h16" />
-                <path d="M4 12h16" />
-                <path d="M4 18h16" />
-              </>
-            )}
-          </svg>
-        </button>
+      {narrativeText && (
+        <div className="scenario-narrative">
+          {scenarioTotal !== undefined && scenarioStep !== undefined && (
+            <div className="scenario-narrative-step">
+              {scenarioStep + 1 <= scenarioTotal
+                ? `Paso ${scenarioStep + 1} / ${scenarioTotal}`
+                : `Paso ${scenarioStep + 1}`}
+            </div>
+          )}
+          <div className="scenario-narrative-text">{renderNarrative(narrativeText)}</div>
+        </div>
       )}
-    </>
+    </aside>
+  </>
   );
 }

@@ -40,22 +40,12 @@ export function ScenarioPanel({
             <button
               className="scenario-panel-toggle"
               onClick={(e) => { e.stopPropagation(); onToggle(); }}
-              aria-label={isOpen ? 'Cerrar panel de escenarios' : 'Abrir panel de escenarios'}
-              title={isOpen ? 'Cerrar panel' : 'Abrir panel'}
+              aria-label="Cerrar panel de escenarios"
+              title="Cerrar panel"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                {isOpen ? (
-                  <>
-                    <path d="M18 6L6 18" />
-                    <path d="M6 6l12 12" />
-                  </>
-                ) : (
-                  <>
-                    <path d="M4 6h16" />
-                    <path d="M4 12h16" />
-                    <path d="M4 18h16" />
-                  </>
-                )}
+                <path d="M18 6L6 18" />
+                <path d="M6 6l12 12" />
               </svg>
             </button>
           )}
@@ -87,6 +77,20 @@ export function ScenarioPanel({
         </div>
       )}
     </aside>
+      {onToggle && !isOpen && (
+        <button
+          className="scenario-panel-floating-toggle"
+          onClick={onToggle}
+          aria-label="Abrir panel de escenarios"
+          title="Abrir panel"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 6h16" />
+            <path d="M4 12h16" />
+            <path d="M4 18h16" />
+          </svg>
+        </button>
+      )}
   </>
   );
 }

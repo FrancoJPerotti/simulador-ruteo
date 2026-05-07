@@ -38,7 +38,7 @@ body {
 .canvas {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -229,6 +229,10 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+}
+
+.scenario-panel-floating-toggle {
+  display: none;
 }
 
 .scenario-panel-title {
@@ -1103,8 +1107,36 @@ body {
   }
 
   .bottom-panel {
-    bottom: max(8px, env(safe-area-inset-bottom, 8px));
+    bottom: 12px;
     gap: 8px;
+  }
+
+  .scenario-panel-floating-toggle {
+    position: absolute;
+    top: 52px;
+    left: 8px;
+    z-index: 102;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .scenario-panel-floating-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .scenario-panel-floating-toggle:hover {
+    background: var(--glass-hover);
   }
 
   .execution-controls {

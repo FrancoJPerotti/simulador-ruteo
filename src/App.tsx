@@ -195,6 +195,7 @@ function App() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationSpeed, setAnimationSpeed] = useState(NORMAL_ANIMATION);
   const [activeScenario, setActiveScenario] = useState<Scenario | null>(null);
+  const [scenarioPanelOpen, setScenarioPanelOpen] = useState(true);
   const [ospfAuthentication, setOspfAuthentication] = useState(false);
   const [rejectedRouterIds, setRejectedRouterIds] = useState<string[]>([]);
   const [scenarioStep, setScenarioStep] = useState(0);
@@ -637,6 +638,7 @@ function App() {
     (scenario: Scenario) => {
       setMode(scenario.mode);
       setActiveScenario(scenario);
+      setScenarioPanelOpen(false);
       applyScenarioStep(scenario, 0);
     },
     [applyScenarioStep],
@@ -923,6 +925,8 @@ function App() {
         narrativeText={activeScenario ? currentNarrative : ""}
         scenarioStep={activeScenario ? scenarioStep : undefined}
         scenarioTotal={activeScenario ? activeScenarioSteps.length : undefined}
+        isOpen={scenarioPanelOpen}
+        onToggle={() => setScenarioPanelOpen((v) => !v)}
       />
 
       {activeScenario?.id === "ospf-hijack" && (

@@ -199,6 +199,10 @@ body {
   overflow-y: auto;
 }
 
+.scenario-panel-toggle {
+  display: none;
+}
+
 .scenario-panel-title {
   margin-bottom: 10px;
   color: var(--text-dim);
@@ -1013,9 +1017,44 @@ body {
     top: 52px;
     left: 8px;
     width: calc(100vw - 16px);
-    max-height: 28vh;
+    max-height: 35vh;
     padding: 10px;
     border-radius: 16px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .scenario-panel--closed {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scenario-panel-toggle {
+    position: absolute;
+    top: 52px;
+    left: 8px;
+    z-index: 102;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .scenario-panel-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .scenario-panel-toggle:hover {
+    background: var(--glass-hover);
   }
 
   .scenario-panel-title {

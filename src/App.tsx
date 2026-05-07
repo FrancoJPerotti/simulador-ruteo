@@ -195,7 +195,12 @@ function App() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationSpeed, setAnimationSpeed] = useState(NORMAL_ANIMATION);
   const [activeScenario, setActiveScenario] = useState<Scenario | null>(null);
-  const [scenarioPanelOpen, setScenarioPanelOpen] = useState(true);
+  const [scenarioPanelOpen, setScenarioPanelOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth > 640;
+    }
+    return true;
+  });
   const [ospfAuthentication, setOspfAuthentication] = useState(false);
   const [rejectedRouterIds, setRejectedRouterIds] = useState<string[]>([]);
   const [scenarioStep, setScenarioStep] = useState(0);

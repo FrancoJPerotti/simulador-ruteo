@@ -25,10 +25,11 @@ body {
   color: var(--text);
   overflow: hidden;
   height: 100vh;
+  height: 100dvh;
   -webkit-font-smoothing: antialiased;
 }
 
-#root { height: 100vh; }
+#root { height: 100vh; height: 100dvh; }
 
 /* ============================================================
    CANVAS LAYOUT
@@ -978,6 +979,111 @@ body {
   height: 1px;
   background: rgba(255,255,255,0.06);
   margin: 4px 0;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .topbar {
+    top: 8px;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pill {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .pill-separator {
+    height: 16px;
+    margin: 0 2px;
+  }
+
+  .status-badge {
+    min-height: 28px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+
+  .scenario-panel {
+    top: 52px;
+    left: 8px;
+    width: calc(100vw - 16px);
+    max-height: 28vh;
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .scenario-panel-title {
+    font-size: 9px;
+    margin-bottom: 6px;
+  }
+
+  .scenario-panel-item {
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+
+  .scenario-panel-description {
+    margin-top: 8px;
+    padding-top: 8px;
+    font-size: 11px;
+  }
+
+  .scenario-narrative {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .scenario-narrative-step {
+    margin-bottom: 6px;
+  }
+
+  .scenario-narrative-text {
+    font-size: 12px;
+  }
+
+  .feature-toggle-panel {
+    top: auto;
+    bottom: 64px;
+    left: 8px;
+    width: calc(100vw - 16px);
+  }
+
+  .bottom-panel {
+    bottom: max(8px, env(safe-area-inset-bottom, 8px));
+    gap: 8px;
+  }
+
+  .execution-controls {
+    gap: 6px;
+  }
+
+  .control-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .control-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .control-icon.reset {
+    width: 20px;
+    height: 20px;
+  }
+
+  .router-popup {
+    min-width: 0;
+    max-width: calc(100vw - 32px);
+    left: 16px !important;
+    right: 16px;
+  }
 }
 
 /* ============================================================
